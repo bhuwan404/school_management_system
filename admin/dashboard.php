@@ -48,7 +48,7 @@ if (!isset($_SESSION['uid'])) {
     <div class="container">
         <!-- Info boxes -->
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="info-box">
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-graduation-cap"></i></span>
 
@@ -64,7 +64,7 @@ if (!isset($_SESSION['uid'])) {
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
 
@@ -79,12 +79,13 @@ if (!isset($_SESSION['uid'])) {
                 <!-- /.info-box -->
             </div>
             <!-- /.col -->
-
-            <div class="col-lg-4 col-md-4 col-sm-12">
+                    
+            <?php if($uid == 1){ ?>
+            <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-search"></i></span>
 
-                    <a href="<?= $site_url ?>admin/">
+                    <a href="<?= $site_url ?>admin/inquires.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">New Inquires</span>
                             <span class="info-box-number">210</span>
@@ -94,7 +95,21 @@ if (!isset($_SESSION['uid'])) {
                 </div>
                 <!-- /.info-box -->
             </div>
-            <!-- /.col -->
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
+
+                    <a href="<?= $site_url ?>admin/user_form.php">
+                        <div class="info-box-content text-dark">
+                            <span class="info-box-text">Apporve Requests</span>
+                            <span class="info-box-number">210</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                    </a>
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <?php } ?>
         </div>
         <!-- /.row -->
 
@@ -111,10 +126,10 @@ if (!isset($_SESSION['uid'])) {
     <script>
         $(document).ready(function() {
             $('#calendar').evoCalendar({
-                theme: 'Midnight Blue',
+                // theme: 'Midnight Blue',
                 // theme: 'Default',
-                // theme: 'Royal Navy',
-                // theme: 'Orange Coral'
+                theme: 'Royal Navy',
+                // theme: 'Orange Coral',
 
                 calendarEvents: [{
                         id: 'bHay68s', // Event's ID (required)
@@ -138,6 +153,31 @@ if (!isset($_SESSION['uid'])) {
             })
         })
     </script>
+</section>
+
+<section id="notice" class=" my-5 pb-5">
+    <div class="container-fluid bg-info text-light py-1">
+        <h2 class="text-center">Notices</h2>
+    </div>
+    <div class="container">
+<?php
+    include('../includes/dbcon.php');
+    $query = "SELECT * FROM notice where to_whom = 'all'";
+    $res = mysqli_query($conn, $query);
+    if (mysqli_num_rows($res) > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+            ?>
+<div class="card my-5 shadow">
+    <div class="card-body">
+        <h2 class="card-title my-2"><?php echo $row['subject'] ?></h2>
+        <p class="card-text"><?php echo $row['message'] ?></p>
+    </div>
+</div>
+            <?
+        }
+    }
+    ?>
+    </div>
 </section>
 
 <?php include('footer.php') ?>

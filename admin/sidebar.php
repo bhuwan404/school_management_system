@@ -54,6 +54,22 @@
                     </a>
                 </li>
 
+                <!-- new inquires -->
+                <li class="nav-item">
+                    <a href="inquires.php" class="nav-link">
+                        <i class="nav-icon fas fa-search"></i>
+                        <p>Inquires</p>
+                    </a>
+                </li>
+
+                <!-- user requests -->
+                <li class="nav-item">
+                    <a href="user_form.php" class="nav-link">
+                        <i class="nav-icon fas fa-user-plus"></i>
+                        <p>User Requests</p>
+                    </a>
+                </li>
+
                 <!-- manage attendance -->
                 <li class="nav-item">
                     <a href="<?= $site_url ?>admin/attendance.php" class="nav-link">
@@ -64,19 +80,12 @@
 
                 <!-- add notice-->
                 <li class="nav-item">
-                    <a href="<?= $site_url ?>admin/notice.php" class="nav-link">
+                    <a href="<?= $site_url ?>admin/add_notice.php" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Add Notice</p>
                     </a>
                 </li>
 
-                <!-- view notice-->
-                <li class="nav-item">
-                    <a href="<?= $site_url ?>admin/notice.php" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Notice</p>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
