@@ -25,3 +25,7 @@
 .nav-tabs .nav-link:not(.active) {
     border-color: transparent !important;
 }
+
+#more {
+    display: none;
+}

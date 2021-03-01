@@ -48,10 +48,9 @@ if (isset($_SESSION['uid'])) {
                                 <input class="form-control btn btn-info" type="submit" value="submit" name="login_student">
                             </form>
                             <div class="my-3 text-center">
-                                <a class="text-decoration-none" href="?id=3" data-target="#signup_modal" data-toggle="modal">Sign Up Now</a>
+                                <a class="text-decoration-none" href="" data-target="#signup_modal_student" data-toggle="modal">Sign Up Now</a>
                             </div>
                         </div>
-
                     </div>
 
                     <div class="tab-pane bg-light fade-show border border-danger" id="teacher">
@@ -70,13 +69,13 @@ if (isset($_SESSION['uid'])) {
                                 <input class="form-control btn btn-info" type="submit" value="submit" name="login_teacher">
                             </form>
                             <div class="my-3 text-center">
-                                <a class="text-decoration-none" href="?id=2" data-target="#signup_modal" data-toggle="modal">Sign Up Now</a>
+                                <a class="text-decoration-none" href="" data-target="#signup_modal_teacher" data-toggle="modal">Sign Up Now</a>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="tab-pane bg-light fade show border border-dark" id="admin">
+                    <div class="tab-pane bg-light fade show border border-dark pb-3" id="admin">
                         <!-- admin login form -->
                         <h3 class="text-center pt-3">Admin Login</h3>
                         <hr>
@@ -91,9 +90,6 @@ if (isset($_SESSION['uid'])) {
                                 </div>
                                 <input class="form-control btn btn-info" type="submit" value="submit" name="login_admin">
                             </form>
-                            <div class="my-3 text-center">
-                                <a class="text-decoration-none" href="?id=1" data-target="#signup_modal" data-toggle="modal">Sign Up Now</a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,16 +99,8 @@ if (isset($_SESSION['uid'])) {
     </div>
 </section>
 
-<!-- signup modal -->
-
-<?php
-$id = '';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    echo $id;
-}
-?>
-<div class="modal" id="signup_modal">
+<!-- signup modal student-->
+<div class="modal" id="signup_modal_student">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -120,8 +108,7 @@ if (isset($_GET['id'])) {
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
-
+                <form action="signup_details.php?id=2" method="POST">
                     <div class="md-form form-group">
                         <input type="text" name="fname" class="form-control" placeholder="First Name" required>
                     </div>
@@ -131,26 +118,60 @@ if (isset($_GET['id'])) {
                     <div class="md-form form-group">
                         <input type="text" name="contact" class="form-control" placeholder="Phone No." required>
                     </div>
-
-                    <?php if ($id == 3) { ?>
-                        <div class="md-form form-group">
-                            <input type="text" name="standard" class="form-control" placeholder="standard" required>
-                        </div>
-                        <div class="md-form form-group">
-                            <input type="text" name="rollno" class="form-control" placeholder="Roll No." required>
-                        </div>
-                    <?php } ?>
-
+                    <div class="md-form form-group">
+                        <input type="text" name="standard" class="form-control" placeholder="standard" required>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="text" name="rollno" class="form-control" placeholder="Roll No." required>
+                    </div>
                     <div class="md-form form-group">
                         <input type="text" name="uname" class="form-control" placeholder="Username" required>
                     </div>
                     <div class="md-form form-group">
                         <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
+                    <div class="md-form from-group">
+                        <button type="submit" class="btn btn-success" name="signup_student">Submit</button>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success" data-dismiss="modal" name="signup">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- signup modal Teacher-->
+<div class="modal" id="signup_modal_teacher">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="">Signup Form</h3>
+                <button class="close" type="button" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form action="signup_details.php?id=2" method="POST">
+                    <div class="md-form form-group">
+                        <input type="text" name="fname" class="form-control" placeholder="First Name" required>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="text" name="lname" class="form-control" placeholder="Last Name" required>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="text" name="contact" class="form-control" placeholder="Phone No." required>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="text" name="uname" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="md-form from-group">
+                        <button type="submit" class="btn btn-success" name="signup_teacher">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
     </div>

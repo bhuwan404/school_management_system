@@ -75,22 +75,22 @@
 
           <div class="w-75 card mx-auto text-center pt-4 shadow-lg">
             <h4>Inquiry Form</h4>
-            <form action="" method="POST">
+            <form action="insert_query.php?id=1" method="POST">
               <div class="form-group">
                 <div class="card-body">
                   <div class="mb-4">
-                    <input type="text" placeholder="Your name" required class="form-control">
+                    <input type="text" name="name" placeholder="Your name" required class="form-control">
                   </div>
                   <div class="mb-4">
-                    <input type="text" placeholder="Your email" class="form-control">
+                    <input type="email" name="email" placeholder="Your email" class="form-control">
                   </div>
                   <div class="mb-4">
-                    <input type="text" placeholder="Your mobile" required class="form-control">
+                    <input type="number" name="phone" placeholder="Your mobile" class="form-control">
                   </div>
                   <div class="mb-4">
-                    <textarea class="form-control" placeholder="Your query" name="message" id="" cols="30" rows="2"></textarea>
+                    <textarea class="form-control" name="message" placeholder="Your query" name="message" id="" cols="30" rows="2"></textarea>
                   </div>
-                  <input class="px-5" type="submit" value="Submit">
+                  <input class="px-5" name="submit" type="submit" value="Submit">
                 </div>
               </div>
 
@@ -122,7 +122,9 @@
                 Bsc. CSIT
               </p>
               <hr>
-              <button class="btn btn-info">View More</button>
+              <button class="btn btn-info" onclick="(read)">View More</button>
+
+
             </div>
           </div>
         </div>
@@ -410,10 +412,10 @@
           <div class="mailing text-center">
             <h3 class="text-center pb-2">Leave a message</h3>
             <!-- <hr> -->
-            <form action="">
-              <input type="text" name="name" placeholder="Name" size="30"><br><br>
-              <input type="email" name="email" placeholder="Email" size="30"><br><br>
-              <textarea name="message" id="" cols="30" rows="3" placeholder="Message"></textarea><br>
+            <form action="insert_query.php?id=2" method="POST">
+              <input type="text" name="name" placeholder="Name" size="30" required><br><br>
+              <input type="email" name="email" placeholder="Email" size="30" required><br><br>
+              <textarea name="message" id="" cols="30" rows="3" placeholder="Message" required></textarea><br>
               <input type="submit" value="Submit" class='btn btn-info px-3 py-1 my-2'>
             </form>
           </div>
