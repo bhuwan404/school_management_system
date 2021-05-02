@@ -117,6 +117,41 @@ if (!isset($_SESSION['uid'])) {
     <!--/. container-fluid -->
 </section>
 
+<!-- notices -->
+<section class="mx-lg-5 mx-md-5 mx-sm-2 my-5 ">
+<div id="notice" class=" pb-5">
+    <div class="container">
+        <hr><h2 class="text-center"><strong>Notices</strong></h2><hr>
+    </div>
+    <!-- <div class="container"> -->
+    <?php
+        include('../includes/dbcon.php');
+        $query = "SELECT * FROM notice where to_whom = 'all'";
+        $res = mysqli_query($conn, $query);
+        if (mysqli_num_rows($res) > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+    ?>
+    <div class="container">
+    <div class="card my-2 shadow bg-white">
+        <div class="card-body text-dark">
+            <h4 class="my-2 text-primary"><?php echo strtoupper($row['subject']) ?></h4>
+            <h5 class="card-text"><?php echo $row['message'] ?></h5>
+        </div>
+    </div>
+    </div>
+            <?php
+        }
+    }
+    else{
+        ?>
+        <h2>No Notices to show</h2>
+        <?php
+    }
+    ?>
+    <!-- </div> -->
+</div> 
+</section>
+
 <!-- calendar -->
 <section class="mx-lg-5 mx-md-5 mx-sm-2 my-5">
 
@@ -155,29 +190,9 @@ if (!isset($_SESSION['uid'])) {
     </script>
 </section>
 
-<section id="notice" class=" my-5 pb-5">
-    <div class="container-fluid bg-info text-light py-1">
-        <h2 class="text-center">Notices</h2>
-    </div>
-    <div class="container">
-<?php
-    include('../includes/dbcon.php');
-    $query = "SELECT * FROM notice where to_whom = 'all'";
-    $res = mysqli_query($conn, $query);
-    if (mysqli_num_rows($res) > 0) {
-        while ($row = mysqli_fetch_assoc($res)) {
-            ?>
-<div class="card my-5 shadow">
-    <div class="card-body">
-        <h2 class="card-title my-2"><?php echo $row['subject'] ?></h2>
-        <p class="card-text"><?php echo $row['message'] ?></p>
-    </div>
-</div>
-            <?
-        }
-    }
-    ?>
-    </div>
-</section>
 
+
+<section id="endpage">
+<div class="my-5 py-5"></div>
+</section>
 <?php include('footer.php') ?>

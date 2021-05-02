@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
     <button class="close" type="button" data-dismiss="modal">&times;</button>
 </div>
 <div class="modal-body">
-    <form action="" method="POST">
+    <form action="signup_details.php" method="POST">
 
         <div class="md-form form-group">
             <input type="text" name="fname" class="form-control" placeholder="First Name" required>

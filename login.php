@@ -150,7 +150,7 @@ if (isset($_SESSION['uid'])) {
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="signup_details.php?id=2" method="POST">
+                <form action="signup_details.php?id=1" method="POST">
                     <div class="md-form form-group">
                         <input type="text" name="fname" class="form-control" placeholder="First Name" required>
                     </div>
