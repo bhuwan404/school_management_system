@@ -85,7 +85,7 @@ if (!isset($_SESSION['uid'])) {
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-search"></i></span>
 
-                    <a href="<?= $site_url ?>admin/inquires.php">
+                    <a href="inquires.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">New Inquires</span>
                             <span class="info-box-number">210</span>
@@ -99,7 +99,7 @@ if (!isset($_SESSION['uid'])) {
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
 
-                    <a href="<?= $site_url ?>admin/user_form.php">
+                    <a href="user_form.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Apporve Requests</span>
                             <span class="info-box-number">210</span>

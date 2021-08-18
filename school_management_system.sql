@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 02, 2021 at 07:56 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Generation Time: Aug 18, 2021 at 02:50 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,32 +39,6 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 (1, 'admin', 'bhuwan');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `classes`
---
-
-CREATE TABLE `classes` (
-  `id` int(11) NOT NULL,
-  `title` varchar(50) NOT NULL,
-  `section` varchar(50) NOT NULL,
-  `added_date` varchar(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `classes`
---
-
-INSERT INTO `classes` (`id`, `title`, `section`, `added_date`) VALUES
-(1, 'cvbnm', '1', '2021-02-16'),
-(2, 'gfhg', '56', '878-8-1'),
-(3, 'asdfg', '1,2,3', '2021-02-16'),
-(4, 'gfads', '4', '2021-02-16'),
-(5, 'dfghj', '3', '2021-02-16'),
-(6, 'dfghj', '3', '2021-02-16'),
-(7, 'dfghj', '3', '2021-02-16');
 
 -- --------------------------------------------------------
 
@@ -109,28 +83,11 @@ INSERT INTO `notice` (`id`, `to_whom`, `subject`, `message`) VALUES
 (2, 'all', 'lockdown', 'bhuwan paneru'),
 (3, '', '', ''),
 (4, '', '', ''),
-(5, '', '', '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `sections`
---
-
-CREATE TABLE `sections` (
-  `id` int(11) NOT NULL,
-  `title` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `sections`
---
-
-INSERT INTO `sections` (`id`, `title`) VALUES
-(1, 'section A'),
-(2, 'section B'),
-(3, 'sec c'),
-(4, 'class-1');
+(5, '', '', ''),
+(6, '', '', ''),
+(7, '', '', ''),
+(8, '', '', ''),
+(9, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -140,11 +97,11 @@ INSERT INTO `sections` (`id`, `title`) VALUES
 
 CREATE TABLE `student` (
   `id` int(11) NOT NULL,
-  `rollno` int(11) NOT NULL,
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
   `contact` varchar(50) NOT NULL,
-  `standard` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `courseName` varchar(50) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -153,8 +110,23 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `rollno`, `fname`, `lname`, `contact`, `standard`, `user_name`, `password`) VALUES
-(5, 12, 'hari', 'shyam', '987654321', '10', 'hari', 'hari');
+INSERT INTO `student` (`id`, `fname`, `lname`, `contact`, `email`, `courseName`, `user_name`, `password`) VALUES
+(14, 'Biplab', 'Baskota', '2345678', 'biplab@gmail.com', 'Bsc.CSIT', 'biplab', 'biplab'),
+(15, 'Krishna', 'Pokhrel', '45678', 'krishna@gmail.com', 'Bsc.CSIT', 'krishna', 'krishna'),
+(21, 'Sandip', 'Ghimire', '8786778', 'sandio@gmail.com', 'BCA', 'sandip', 'sandip'),
+(22, 'Bhuwan', 'Paneru', '43879879', 'bhuwanpaneru96@gmail.com', 'BCA', 'bhuwan', 'bhuwan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentInquiry`
+--
+
+CREATE TABLE `studentInquiry` (
+  `studentId` int(11) NOT NULL,
+  `query` varchar(255) DEFAULT NULL,
+  `reply` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -167,6 +139,8 @@ CREATE TABLE `teacher` (
   `fname` varchar(50) NOT NULL,
   `lname` varchar(50) NOT NULL,
   `contact` varchar(50) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `courseName` varchar(255) NOT NULL,
   `user_name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -175,10 +149,10 @@ CREATE TABLE `teacher` (
 -- Dumping data for table `teacher`
 --
 
-INSERT INTO `teacher` (`id`, `fname`, `lname`, `contact`, `user_name`, `password`) VALUES
-(11, 'ramesh', 'saud', '34280923', 'ramesh', 'ramesh'),
-(12, 'bhuwan', 'paneru', '34984', 'bhuwan', 'bhuwan'),
-(13, 'radha', 'budathoki', '4098209483', 'radha', 'radha');
+INSERT INTO `teacher` (`id`, `fname`, `lname`, `contact`, `email`, `courseName`, `user_name`, `password`) VALUES
+(16, 'Ramesh', 'Saud', '356789', 'ramesh@gmail.com', 'Bsc.CSIT', 'ramesh', 'ramesh'),
+(17, 'Basant', 'Chapagain', '6789767', 'basant@gmail.com', 'BCA', 'basant', 'basant'),
+(18, 'Jagadish', 'Bhatta', '45698767', 'jagadish@gmail.com', 'BCA', 'jagadish', 'jagadish');
 
 -- --------------------------------------------------------
 
@@ -188,14 +162,14 @@ INSERT INTO `teacher` (`id`, `fname`, `lname`, `contact`, `user_name`, `password
 
 CREATE TABLE `user_form` (
   `id` int(11) NOT NULL,
-  `fname` varchar(255) DEFAULT NULL,
-  `lname` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `username` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `courseName` varchar(50) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `user_type` varchar(255) DEFAULT NULL,
-  `standard` varchar(255) DEFAULT NULL,
-  `rollno` varchar(255) DEFAULT NULL,
   `post_date` date NOT NULL DEFAULT current_timestamp(),
   `check_approval` int(11) NOT NULL DEFAULT -1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -204,11 +178,9 @@ CREATE TABLE `user_form` (
 -- Dumping data for table `user_form`
 --
 
-INSERT INTO `user_form` (`id`, `fname`, `lname`, `phone`, `username`, `password`, `user_type`, `standard`, `rollno`, `post_date`, `check_approval`) VALUES
-(2, 'dhan', 'pali', '439803498', 'dhan', 'dhan', '2', '14', '2', '2021-05-02', 0),
-(3, 'ramesh', 'saud', '34280923', 'ramesh', 'ramesh', '1', '', '', '2021-05-02', 1),
-(4, 'hari', 'hari', '340890938', 'hari', 'hari', '1', '', '', '2021-05-02', -1),
-(5, 'ram', 'ram', '98843', 'ram', 'ram', '2', '12', '21', '2021-05-02', -1);
+INSERT INTO `user_form` (`id`, `fname`, `lname`, `courseName`, `phone`, `email`, `username`, `password`, `user_type`, `post_date`, `check_approval`) VALUES
+(8, 'Surendra', 'Kathariya', 'BCA', '4382830', 'surendra@gmail.com', 'surendra', 'surendra', 'student', '2021-08-18', -1),
+(9, 'Bindu', 'Neupane', 'Bsc.CSIT', '4389893', 'bindu@gmail.com', 'bindu', 'bindu', 'teacher', '2021-08-18', -1);
 
 --
 -- Indexes for dumped tables
@@ -218,12 +190,6 @@ INSERT INTO `user_form` (`id`, `fname`, `lname`, `phone`, `username`, `password`
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `classes`
---
-ALTER TABLE `classes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -239,16 +205,16 @@ ALTER TABLE `notice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `sections`
---
-ALTER TABLE `sections`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `student`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `studentInquiry`
+--
+ALTER TABLE `studentInquiry`
+  ADD PRIMARY KEY (`studentId`);
 
 --
 -- Indexes for table `teacher`
@@ -273,12 +239,6 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `classes`
---
-ALTER TABLE `classes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
 -- AUTO_INCREMENT for table `inquires`
 --
 ALTER TABLE `inquires`
@@ -288,31 +248,35 @@ ALTER TABLE `inquires`
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `sections`
---
-ALTER TABLE `sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `studentInquiry`
+--
+ALTER TABLE `studentInquiry`
+  ADD CONSTRAINT `studentInquiry_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `student` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

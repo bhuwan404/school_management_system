@@ -3,26 +3,25 @@ $id = $_GET['id'];
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
+$course = $_POST['course'];
 $phone = $_POST['contact'];
+$email = $_POST['email'];
 $username = $_POST['uname'];
 $password = $_POST['password'];
 
 if ($id == 2) {
-    $rollno = $_POST['rollno'];
-    $standard = $_POST['standard'];
+    $user = "student";
+}
+else{
+    $user = "teacher";
 }
 
 include('includes/dbcon.php');
+$sql = "INSERT INTO user_form (fname, lname, courseName, phone, email, username, password, user_type) VALUES('$fname', '$lname', '$course', '$phone', '$email', '$username', '$password', '$user')";
 
-if ($id == 1) {
-
-    $sql = "INSERT INTO user_form (fname, lname, phone, username, password, user_type) VALUES('$fname', '$lname', '$phone', '$username', '$password', '$id')";
-}
-if ($id == 2) {
-    $sql = "INSERT INTO user_form (fname, lname, phone, username, password, user_type, standard, rollno) VALUES('$fname', '$lname', '$phone', '$username', '$password', '$id', '$standard', '$rollno')";
-}
 $res = mysqli_query($conn, $sql);
 if (!$res) {
+    // echo "failed";
     die('Signup failed!');
 } else {
 ?>

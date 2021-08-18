@@ -36,13 +36,34 @@ include('../includes/dbcon.php')
     </div><!-- /.container-fluid -->
 </div>
 <div class="container pb-5">
+<div class="m-3">
+        <form action="" method="POST">
+            <b>select Faculty</b>
+            <select name="faculty">
+                <option>Bsc.CSIT</option>
+                <option>BCA</option>
+                <option>BIM</option>
+                <option>BBS</option>
+            </select>
+            <button type="submit" name="submit" class="btn btn-danger mx-3">Show Results</button>
+        </form>
+    </div>
+    
+    <?php if(isset($_POST['submit'])){
+        $faculty = $_POST['faculty'];
+        ?>
+
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>S.N.</th>
                     <th>Name</th>
+                    <th>Course Name</th>
                     <th>Contact</th>
+                    <th>email</th>
+                    <th>UserName</th>
+                    <th>Password</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -52,7 +73,7 @@ include('../includes/dbcon.php')
 
                 <?php
                 include('../includes/dbcon.php');
-                $sql = "SELECT * FROM teacher";
+                $sql = "SELECT * FROM teacher where courseName='$faculty'";
                 $res = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($res) < 1) {
@@ -65,7 +86,11 @@ include('../includes/dbcon.php')
                         echo "<tr>";
                         echo "<td>" . $count++ . "</td>";
                         echo "<td>" . $row['fname'] . " " . $row['lname'] . "</td>";
+                        echo "<td>" . $row['courseName'] . "</td>";
                         echo "<td>" . $row['contact'] . "</td>";
+                        echo "<td>" . $row['email'] . "</td>";
+                        echo "<td>" . $row['user_name'] . "</td>";
+                        echo "<td>" . $row['password'] . "</td>";
                         echo "<td><a href=\"update_teacher.php?id=" . $row['id'] . "\">update</a></td>";
                         echo "<td><a href=\"delete_teacher.php?id=" . $row['id'] . "\">delete</a></td>";
                         echo "</tr>";
@@ -77,5 +102,6 @@ include('../includes/dbcon.php')
             </tbody>
         </table>
     </div>
+    <?php } ?>
 </div>
 <?php include('footer.php') ?>

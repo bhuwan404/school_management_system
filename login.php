@@ -104,7 +104,7 @@ if (isset($_SESSION['uid'])) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="">Signup Form</h3>
+                <h3 class="">Student Signup Form</h3>
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -116,13 +116,19 @@ if (isset($_SESSION['uid'])) {
                         <input type="text" name="lname" class="form-control" placeholder="Last Name" required>
                     </div>
                     <div class="md-form form-group">
+                    <select class="form-control" id="courseTitle" name="course">
+                        <option>Bsc.CSIT</option>
+                        <option>BCA</option>
+                        <option>BIM</option>
+                        <option>BBS</option>
+                    </select> 
+                    </div>
+                    <div class="md-form form-group">
                         <input type="text" name="contact" class="form-control" placeholder="Phone No." required>
                     </div>
+                    
                     <div class="md-form form-group">
-                        <input type="text" name="standard" class="form-control" placeholder="standard" required>
-                    </div>
-                    <div class="md-form form-group">
-                        <input type="text" name="rollno" class="form-control" placeholder="Roll No." required>
+                        <input type="text" name="email" class="form-control" placeholder="Email Address" required>
                     </div>
                     <div class="md-form form-group">
                         <input type="text" name="uname" class="form-control" placeholder="Username" required>
@@ -146,19 +152,31 @@ if (isset($_SESSION['uid'])) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="">Signup Form</h3>
+                <h3 class="">Teacher Signup Form</h3>
                 <button class="close" type="button" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <form action="signup_details.php?id=1" method="POST">
-                    <div class="md-form form-group">
+                <div class="md-form form-group">
                         <input type="text" name="fname" class="form-control" placeholder="First Name" required>
                     </div>
                     <div class="md-form form-group">
                         <input type="text" name="lname" class="form-control" placeholder="Last Name" required>
                     </div>
                     <div class="md-form form-group">
+                        <select class="form-control" id="courseTitle" name="course">
+                            <option>Bsc.CSIT</option>
+                            <option>BCA</option>
+                            <option>BIM</option>
+                            <option>BBS</option>
+                        </select>                     
+                    </div>
+                    <div class="md-form form-group">
                         <input type="text" name="contact" class="form-control" placeholder="Phone No." required>
+                    </div>
+                    
+                    <div class="md-form form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Email Address" required>
                     </div>
                     <div class="md-form form-group">
                         <input type="text" name="uname" class="form-control" placeholder="Username" required>
@@ -167,7 +185,7 @@ if (isset($_SESSION['uid'])) {
                         <input type="password" name="password" class="form-control" placeholder="Password" required>
                     </div>
                     <div class="md-form from-group">
-                        <button type="submit" class="btn btn-success" name="signup_teacher">Submit</button>
+                        <button type="submit" class="btn btn-success" name="signup_student">Submit</button>
                     </div>
                 </form>
             </div>

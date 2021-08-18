@@ -20,7 +20,7 @@
         </div><!-- /.row -->
     </div>
 </div>
-<div class="container pb-5">
+<div class="container pb-5 mb-5">
     <form method="POST">
         <div class="form-group">
             <label for="firstname">First Name</label>
@@ -31,16 +31,21 @@
             <input type="text" class="form-control" name="lname" id="lastname" placeholder="Enter Last Name">
         </div>
         <div class="form-group">
-            <label for="roll">Roll No.</label>
-            <input type="number" class="form-control" name="rollno" required id="roll" placeholder="Enter Roll No.">
-        </div>
-        <div class="form-group">
-            <label for="std">Standard</label>
-            <input type="text" class="form-control" name="standard" required id="std" placeholder="Enter Last Name">
+            <label for="courseTitle">CourseName</label>
+            <select class="form-control" id="courseTitle" name="course">
+                <option>Bsc.CSIT</option>
+                <option>BCA</option>
+                <option>BIM</option>
+                <option>BBS</option>
+            </select>       
         </div>
         <div class="form-group">
             <label for="contact">Phone No.</label>
             <input type="number" class="form-control" name="phone" required id="contact" placeholder="Enter Phone No.">
+        </div>
+        <div class="form-group">
+            <label for="contact">Email</label>
+            <input type="email" class="form-control" name="email" required id="email" placeholder="Enter Email Address">
         </div>
         <div class="form-group">
             <label for="user_name">Username</label>
@@ -65,13 +70,14 @@ if (isset($_POST['submit'])) {
 
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
-    $rollno = $_POST['rollno'];
-    $standard = $_POST['standard'];
+    $courseName = $_POST['course'];
     $phone = $_POST['phone'];
+    $email = $_POST['email'];
     $uname = $_POST['uname'];
     $pwd = $_POST['password'];
+    echo $courseName;
 
-    $sql = "INSERT INTO student (fname, lname, rollno, standard, contact, user_name, password) VALUES ('$fname', '$lname', '$rollno', '$standard', '$phone', '$uname', '$pwd')";
+    $sql = "INSERT INTO student (fname, lname, contact, email, courseName, user_name, password) VALUES ('$fname', '$lname', '$phone', '$email', '$courseName', '$uname', '$pwd')";
     $res = mysqli_query($conn, $sql);
     if (!$res) {
         die('Insertion failed!');

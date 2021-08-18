@@ -45,7 +45,7 @@ if ($uid == 2 or $uid == 3) {
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-user-graduate"></i></span>
-                <a href="<?= $site_url ?>admin/list_student.php">
+                <a href="list_student.php">
                     <div class="info-box-content text-dark">
                         <span class="info-box-text">View All Students</span>
                         <span class="info-box-number"><i class="fas fa-eye"></i></span>
@@ -56,7 +56,7 @@ if ($uid == 2 or $uid == 3) {
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-user-graduate"></i></span>
-                <a href="<?= $site_url ?>admin/add_student.php">
+                <a href="add_student.php">
                     <div class="info-box-content text-dark">
                         <span class="info-box-text">Add Students</span>
                         <span class="info-box-number"><i class="fas fa-plus"></i></span>
@@ -67,7 +67,7 @@ if ($uid == 2 or $uid == 3) {
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-user-graduate"></i></span>
-                <a href="<?= $site_url ?>admin/">
+                <a href="approve_user_form.php">
                     <div class="info-box-content text-dark">
                         <span class="info-box-text">Approve Students</span>
                         <span class="info-box-number"><i class="fas fa-check"></i></span>

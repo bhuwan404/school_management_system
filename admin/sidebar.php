@@ -73,7 +73,7 @@
 
                 <!-- manage attendance -->
                 <li class="nav-item">
-                    <a href="<?= $site_url ?>admin/attendance.php" class="nav-link">
+                    <a href="attendance.php" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Attendance</p>
                     </a>
@@ -81,7 +81,7 @@
 
                 <!-- add notice-->
                 <li class="nav-item">
-                    <a href="<?= $site_url ?>admin/add_notice.php" class="nav-link">
+                    <a href="add_notice.php" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>
                         <p>Add Notice</p>
                     </a>
