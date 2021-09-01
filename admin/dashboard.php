@@ -4,7 +4,35 @@ $uid = $_SESSION['uid'];
 if (!isset($_SESSION['uid'])) {
     header('location: ../login.php');
 }
+include('../includes/dbcon.php');
+$id = $_SESSION['id'];
+if($uid == 2){
+    $sql = "select * from teacher where id=$id";
+}
+else if($uid == 3){
+    $sql = "select * from student where id=$id";
+    
+}
+else{
+    $sql = "select * from admin where id=$id";
+}
 
+$res = mysqli_query($conn, $sql);
+if(!$res){
+    echo "$uid";
+    echo "$id";
+    die("query failed");
+}
+else{
+    $row = mysqli_fetch_assoc($res);
+    $user = $row['fname'];
+}
+
+$studentCount = mysqli_query($conn, "select count(*) from student");
+$teacherCount = mysqli_query($conn, "select count(*) from teacher");
+
+$totalStudent = mysqli_fetch_array($studentCount);
+$totalTeacher = mysqli_fetch_array($teacherCount);
 
 ?>
 
@@ -20,20 +48,12 @@ if (!isset($_SESSION['uid'])) {
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
                 <h3><strong>WELCOME
-                        <?php
-                        if ($uid == 3) {
-                            echo "STUDENT";
-                        } else if ($uid == 2) {
-                            echo "TEACHER";
-                        } else { //if($uid == 3])
-                            echo "ADMIN";
-                        }
-                        ?>
+                        <?php echo strtoupper($user); ?>
                     </strong></h3>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="#"><?php echo $user ?></a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div><!-- /.col -->
@@ -52,11 +72,11 @@ if (!isset($_SESSION['uid'])) {
                 <div class="info-box">
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-graduation-cap"></i></span>
 
-                    <a href="student.php">
+                    <a href="list_student.php">
 
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Total Students</span>
-                            <span class="info-box-number">2000</span>
+                            <span class="info-box-number"><?php echo "$totalStudent[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -68,10 +88,10 @@ if (!isset($_SESSION['uid'])) {
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
 
-                    <a href="teacher.php">
+                    <a href="list_teacher.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Total Teachers</span>
-                            <span class="info-box-number">50</span>
+                            <span class="info-box-number"><?php echo "$totalTeacher[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>

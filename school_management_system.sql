@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 18, 2021 at 02:50 PM
+-- Generation Time: Sep 01, 2021 at 04:46 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -29,7 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `fname` varchar(50) NOT NULL,
+  `lname` varchar(50) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -37,8 +39,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'bhuwan');
+INSERT INTO `admin` (`id`, `fname`, `lname`, `user_name`, `password`) VALUES
+(1, 'Bhuwan', 'Paneru', 'admin', 'bhuwan');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,8 @@ INSERT INTO `notice` (`id`, `to_whom`, `subject`, `message`) VALUES
 (6, '', '', ''),
 (7, '', '', ''),
 (8, '', '', ''),
-(9, '', '', '');
+(9, '', '', ''),
+(10, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -248,7 +251,7 @@ ALTER TABLE `inquires`
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `student`

@@ -122,9 +122,7 @@
                 Bsc. CSIT
               </p>
               <hr>
-              <button class="btn btn-info" onclick="(read)">View More</button>
-
-
+              <a href="courseDetails/csit.php"><button class="btn btn-info text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -139,7 +137,7 @@
                 BCA
               </p>
               <hr>
-              <button class="btn btn-info">View More</button>
+              <a href="courseDetails/bca.php"><button class="btn btn-info text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -154,7 +152,7 @@
                 BIM
               </p>
               <hr>
-              <button class="btn btn-info">View More</button>
+              <a href="courseDetails/bim.php"><button class="btn btn-info text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -169,7 +167,7 @@
                 BBS
               </p>
               <hr>
-              <button class="btn btn-info">View More</button>
+              <a href="courseDetails/bbs.php"><button class="btn btn-info text-light">View More</button></a>
             </div>
           </div>
         </div>

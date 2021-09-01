@@ -6,7 +6,7 @@ if (isset($_POST['login_admin'])) {
     $password = $_POST['admin_password'];
     echo $username;
 
-    $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM admin WHERE user_name='$username' AND password='$password'";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_num_rows($res);
     print_r($row);
@@ -23,9 +23,9 @@ if (isset($_POST['login_admin'])) {
         $id = $data['id'];
 
         session_start();
-        // $_SESSION['uid_admin'] = $id;
+        $_SESSION['id'] = $id;
         $_SESSION['uid'] = 1;
-        header('location: admin/dashboard.php');
+        header("location: admin/dashboard.php");
     }
 }
 ?>

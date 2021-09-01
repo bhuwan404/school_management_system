@@ -24,9 +24,9 @@ if (isset($_POST['login_student'])) {
         $id = $data['id'];
 
         session_start();
-        // $_SESSION['uid_student'] = $id;
         $_SESSION['uid'] = 3;
-        header('location: admin/dashboard.php');
+        $_SESSION['id'] = $id;
+        header("location: admin/dashboard.php");
     }
 }
 ?>

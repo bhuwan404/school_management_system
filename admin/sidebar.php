@@ -21,9 +21,9 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="<?= $site_url ?>admin/dashboard.php" class="brand-link">
-        <img src="<?= $site_url ?>images/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">SMS Admin</span>
+    <a href="user.php" class="brand-link">
+        <img src="../images/user.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">My Profile</span>
     </a>
 
     <!-- Sidebar -->
@@ -40,6 +40,7 @@
                 </li>
 
                 <!-- manage Students -->
+                
                 <li class="nav-item ">
                     <a href="student.php" class="nav-link">
                         <i class="nav-icon fas fa-graduation-cap"></i>
@@ -55,21 +56,36 @@
                     </a>
                 </li>
 
-                <!-- new inquires -->
-                <li class="nav-item">
-                    <a href="inquires.php" class="nav-link">
-                        <i class="nav-icon fas fa-search"></i>
-                        <p>Inquires</p>
-                    </a>
-                </li>
+                <?php
+                $uid = $_SESSION['uid'];
+                if($uid == 1){
+                ?>
+<!-- new inquires -->
+<li class="nav-item">
+    <a href="inquires.php" class="nav-link">
+        <i class="nav-icon fas fa-search"></i>
+        <p>Inquires</p>
+    </a>
+</li>
 
-                <!-- user requests -->
-                <li class="nav-item">
-                    <a href="user_form.php" class="nav-link">
-                        <i class="nav-icon fas fa-user-plus"></i>
-                        <p>User Requests</p>
-                    </a>
-                </li>
+<!-- user requests -->
+<li class="nav-item">
+    <a href="user_form.php" class="nav-link">
+        <i class="nav-icon fas fa-user-plus"></i>
+        <p>User Requests</p>
+    </a>
+</li>
+
+<!-- add notice-->
+<li class="nav-item">
+    <a href="add_notice.php" class="nav-link">
+        <i class="nav-icon fas fa-user"></i>
+        <p>Add Notice</p>
+    </a>
+</li>
+                <?php } 
+                if($uid == 1 or $uid == 2){
+                ?>
 
                 <!-- manage attendance -->
                 <li class="nav-item">
@@ -78,14 +94,7 @@
                         <p>Attendance</p>
                     </a>
                 </li>
-
-                <!-- add notice-->
-                <li class="nav-item">
-                    <a href="add_notice.php" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Add Notice</p>
-                    </a>
-                </li>
+                <?php } ?>
 
             </ul>
         </nav>
