@@ -1,9 +1,6 @@
+<?php include('header.php') ?>
+
 <?php
-session_start();
-$uid = $_SESSION['uid'];
-if (!isset($_SESSION['uid'])) {
-    header('location: ../login.php');
-}
 include('../includes/dbcon.php');
 $id = $_SESSION['id'];
 if($uid == 2){
@@ -37,7 +34,6 @@ else{
 
 ?>
 
-<?php include('header.php') ?>
 <?php include('sidebar.php') ?>
 
 <!-- Content Header (Page header) -->

@@ -57,7 +57,7 @@
                 </li>
 
                 <?php
-                $uid = $_SESSION['uid'];
+                
                 if($uid == 1){
                 ?>
 <!-- new inquires -->
@@ -78,23 +78,19 @@
 
 <!-- add notice-->
 <li class="nav-item">
+    <a href="add_news.php" class="nav-link">
+        <i class="nav-icon fas fa-user"></i>
+        <p>Add News</p>
+    </a>
+</li>
+<!-- add notice-->
+<li class="nav-item">
     <a href="add_notice.php" class="nav-link">
         <i class="nav-icon fas fa-user"></i>
         <p>Add Notice</p>
     </a>
 </li>
-                <?php } 
-                if($uid == 1 or $uid == 2){
-                ?>
-
-                <!-- manage attendance -->
-                <li class="nav-item">
-                    <a href="attendance.php" class="nav-link">
-                        <i class="nav-icon fas fa-user"></i>
-                        <p>Attendance</p>
-                    </a>
-                </li>
-                <?php } ?>
+                <?php }?>
 
             </ul>
         </nav>

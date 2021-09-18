@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 01, 2021 at 04:46 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: Sep 18, 2021 at 04:25 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -50,6 +51,7 @@ INSERT INTO `admin` (`id`, `fname`, `lname`, `user_name`, `password`) VALUES
 
 CREATE TABLE `inquires` (
   `id` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
   `name` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `number` varchar(255) DEFAULT NULL,
@@ -60,8 +62,30 @@ CREATE TABLE `inquires` (
 -- Dumping data for table `inquires`
 --
 
-INSERT INTO `inquires` (`id`, `name`, `email`, `number`, `message`) VALUES
-(1, 'bhuwan', 'b@gmail.com', '348970980', 'alkjsfdljkasfdljksfad');
+INSERT INTO `inquires` (`id`, `date`, `name`, `email`, `number`, `message`) VALUES
+(1, '2021-09-16', 'bhuwan', 'b@gmail.com', '348970980', 'alkjsfdljkasfdljksfad');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `news`
+--
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `heading` varchar(255) NOT NULL,
+  `content` varchar(3000) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `news`
+--
+
+INSERT INTO `news` (`id`, `date`, `heading`, `content`, `image`) VALUES
+(6, '2021-09-18', 'LockDown News', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has bee', 'IMG-6145abab036a80.71331644.jpg'),
+(11, '2021-09-18', 'Lorem Ipsum', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'IMG-6145c7a105cfa9.95617695.jpg');
 
 -- --------------------------------------------------------
 
@@ -73,24 +97,17 @@ CREATE TABLE `notice` (
   `id` int(11) NOT NULL,
   `to_whom` varchar(50) NOT NULL,
   `subject` varchar(255) NOT NULL,
-  `message` varchar(1000) NOT NULL
+  `message` varchar(1000) NOT NULL,
+  `postDate` date NOT NULL DEFAULT current_timestamp(),
+  `validUpto` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `notice`
 --
 
-INSERT INTO `notice` (`id`, `to_whom`, `subject`, `message`) VALUES
-(1, '', '', ''),
-(2, 'all', 'lockdown', 'bhuwan paneru'),
-(3, '', '', ''),
-(4, '', '', ''),
-(5, '', '', ''),
-(6, '', '', ''),
-(7, '', '', ''),
-(8, '', '', ''),
-(9, '', '', ''),
-(10, '', '', '');
+INSERT INTO `notice` (`id`, `to_whom`, `subject`, `message`, `postDate`, `validUpto`) VALUES
+(2, 'all', 'lockdown', 'bhuwan paneru', '2021-09-17', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -117,15 +134,17 @@ INSERT INTO `student` (`id`, `fname`, `lname`, `contact`, `email`, `courseName`,
 (14, 'Biplab', 'Baskota', '2345678', 'biplab@gmail.com', 'Bsc.CSIT', 'biplab', 'biplab'),
 (15, 'Krishna', 'Pokhrel', '45678', 'krishna@gmail.com', 'Bsc.CSIT', 'krishna', 'krishna'),
 (21, 'Sandip', 'Ghimire', '8786778', 'sandio@gmail.com', 'BCA', 'sandip', 'sandip'),
-(22, 'Bhuwan', 'Paneru', '43879879', 'bhuwanpaneru96@gmail.com', 'BCA', 'bhuwan', 'bhuwan');
+(22, 'Bhuwan', 'Paneru', '43879879', 'bhuwanpaneru96@gmail.com', 'BCA', 'bhuwan', 'bhuwan'),
+(23, 'Surendra', 'Kathariya', '4382830', 'surendra@gmail.com', 'BCA', 'surendra', 'surendra'),
+(24, 'kamal', 'chataut', '9876543434', 'kamal@gmail.com', 'BBS', 'kamal', 'kamal');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `studentInquiry`
+-- Table structure for table `studentinquiry`
 --
 
-CREATE TABLE `studentInquiry` (
+CREATE TABLE `studentinquiry` (
   `studentId` int(11) NOT NULL,
   `query` varchar(255) DEFAULT NULL,
   `reply` varchar(255) DEFAULT NULL
@@ -155,7 +174,10 @@ CREATE TABLE `teacher` (
 INSERT INTO `teacher` (`id`, `fname`, `lname`, `contact`, `email`, `courseName`, `user_name`, `password`) VALUES
 (16, 'Ramesh', 'Saud', '356789', 'ramesh@gmail.com', 'Bsc.CSIT', 'ramesh', 'ramesh'),
 (17, 'Basant', 'Chapagain', '6789767', 'basant@gmail.com', 'BCA', 'basant', 'basant'),
-(18, 'Jagadish', 'Bhatta', '45698767', 'jagadish@gmail.com', 'BCA', 'jagadish', 'jagadish');
+(18, 'Jagadish', 'Bhatta', '45698767', 'jagadish@gmail.com', 'BCA', 'jagadish', 'jagadish'),
+(19, 'Bindu', 'Neupane', '4389893', 'bindu@gmail.com', 'Bsc.CSIT', 'bindu', 'bindu'),
+(20, 'Sudarsan', 'Sharma', '9876543211', 'ss@gmail.com', 'BCA', 'sudarsan', 'sudarsan'),
+(21, 'Sudarsan', 'Sharma', '9876543211', 'ss@gmail.com', 'BCA', 'sudarsan', 'sudarsan');
 
 -- --------------------------------------------------------
 
@@ -182,8 +204,10 @@ CREATE TABLE `user_form` (
 --
 
 INSERT INTO `user_form` (`id`, `fname`, `lname`, `courseName`, `phone`, `email`, `username`, `password`, `user_type`, `post_date`, `check_approval`) VALUES
-(8, 'Surendra', 'Kathariya', 'BCA', '4382830', 'surendra@gmail.com', 'surendra', 'surendra', 'student', '2021-08-18', -1),
-(9, 'Bindu', 'Neupane', 'Bsc.CSIT', '4389893', 'bindu@gmail.com', 'bindu', 'bindu', 'teacher', '2021-08-18', -1);
+(8, 'Surendra', 'Kathariya', 'BCA', '4382830', 'surendra@gmail.com', 'surendra', 'surendra', 'student', '2021-08-18', 1),
+(9, 'Bindu', 'Neupane', 'Bsc.CSIT', '4389893', 'bindu@gmail.com', 'bindu', 'bindu', 'teacher', '2021-08-18', 1),
+(10, 'Sudarsan', 'Sharma', 'BCA', '9876543211', 'ss@gmail.com', 'sudarsan', 'sudarsan', 'teacher', '2021-09-17', 1),
+(11, 'kamal', 'chataut', 'BBS', '9876543434', 'kamal@gmail.com', 'kamal', 'kamal', 'student', '2021-09-17', 1);
 
 --
 -- Indexes for dumped tables
@@ -202,6 +226,12 @@ ALTER TABLE `inquires`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `news`
+--
+ALTER TABLE `news`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `notice`
 --
 ALTER TABLE `notice`
@@ -214,9 +244,9 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `studentInquiry`
+-- Indexes for table `studentinquiry`
 --
-ALTER TABLE `studentInquiry`
+ALTER TABLE `studentinquiry`
   ADD PRIMARY KEY (`studentId`);
 
 --
@@ -248,37 +278,43 @@ ALTER TABLE `inquires`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `news`
+--
+ALTER TABLE `news`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user_form`
 --
 ALTER TABLE `user_form`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `studentInquiry`
+-- Constraints for table `studentinquiry`
 --
-ALTER TABLE `studentInquiry`
+ALTER TABLE `studentinquiry`
   ADD CONSTRAINT `studentInquiry_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `student` (`id`);
 COMMIT;
 

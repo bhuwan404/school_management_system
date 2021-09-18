@@ -1,42 +1,24 @@
-<?php
-session_start();
-$uid = $_SESSION['uid'];
-if (!isset($_SESSION['uid'])) {
-    header('location: ../login.php');
-}
-include('../includes/dbcon.php');
-$id = $_SESSION['id'];
-if($uid == 2){
-    $sql = "select * from teacher where id=$id";
-}
-else if($uid == 3){
-    $sql = "select * from student where id=$id";
-    
-}
-else{
-    $sql = "select * from admin where id=$id";
-}
+<?php include('header.php') ?>
 
-$res = mysqli_query($conn, $sql);
-if(!$res){
-    echo "$uid";
-    echo "$id";
-    die("query failed");
-}
-else{
-    $row = mysqli_fetch_assoc($res);
-    $user = $row['fname'];
-}
+
+<?php
+include('../includes/dbcon.php');
+
 
 $studentCount = mysqli_query($conn, "select count(*) from student");
 $teacherCount = mysqli_query($conn, "select count(*) from teacher");
+$inquiryCount = mysqli_query($conn, "select count(*) from inquires");
+$approveRequests = mysqli_query($conn, "select count(*) from user_form where check_approval<0");
+
 
 $totalStudent = mysqli_fetch_array($studentCount);
 $totalTeacher = mysqli_fetch_array($teacherCount);
+$totalInquiry = mysqli_fetch_array($inquiryCount);
+$totalRequest = mysqli_fetch_array($approveRequests);
+
 
 ?>
 
-<?php include('header.php') ?>
 <?php include('sidebar.php') ?>
 
 <!-- Content Header (Page header) -->
@@ -47,9 +29,7 @@ $totalTeacher = mysqli_fetch_array($teacherCount);
                 <a href="../index.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME
-                        <?php echo strtoupper($user); ?>
-                    </strong></h3>
+                <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
@@ -72,7 +52,7 @@ $totalTeacher = mysqli_fetch_array($teacherCount);
                 <div class="info-box">
                     <span class="info-box-icon bg-info elevation-1"><i class="fas fa-graduation-cap"></i></span>
 
-                    <a href="list_student.php">
+                    <a href="student.php">
 
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Total Students</span>
@@ -88,7 +68,7 @@ $totalTeacher = mysqli_fetch_array($teacherCount);
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-users"></i></span>
 
-                    <a href="list_teacher.php">
+                    <a href="teacher.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Total Teachers</span>
                             <span class="info-box-number"><?php echo "$totalTeacher[0]" ?></span>
@@ -108,7 +88,7 @@ $totalTeacher = mysqli_fetch_array($teacherCount);
                     <a href="inquires.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">New Inquires</span>
-                            <span class="info-box-number">210</span>
+                            <span class="info-box-number"><?php echo "$totalInquiry[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -122,7 +102,7 @@ $totalTeacher = mysqli_fetch_array($teacherCount);
                     <a href="user_form.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Apporve Requests</span>
-                            <span class="info-box-number">210</span>
+                            <span class="info-box-number"><?php echo "$totalRequest[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -141,7 +121,7 @@ $totalTeacher = mysqli_fetch_array($teacherCount);
 <section class="mx-lg-5 mx-md-5 mx-sm-2 my-5 ">
 <div id="notice" class=" pb-5">
     <div class="container">
-        <hr><h2 class="text-center"><strong>Notices</strong></h2><hr>
+        <hr><h4 class="text-center"><strong>Notices</strong></h4><hr>
     </div>
     <!-- <div class="container"> -->
     <?php

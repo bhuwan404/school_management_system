@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+
 <?php include('../includes/dbcon.php') ?>
 <?php include('sidebar.php') ?>
 <div class="content-header">
@@ -8,7 +9,7 @@
                 <a href="teacher.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME ADMIN</strong></h3>
+            <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
@@ -42,8 +43,8 @@
                         <i class="fas fa-envelope pr-2 text-primary"></i><a class="text-primary"><?php echo $row['email'] ?></a><br>
 
                         <?php
-                        if ($row['phone_no'] != NULL) {
-                            echo "<i class=\"fas fa-phone pr-2 text-primary\"></i><a class=\" text-primary\">" . $row['phone_no'] . "<a></i><br>";
+                        if ($row['number'] != NULL) {
+                            echo "<i class=\"fas fa-phone pr-2 text-primary\"></i><a class=\" text-primary\">" . $row['number'] . "<a></i><br>";
                         }
                         ?>
                         <p class="p-2"><?php echo $row['message'] ?></p>
@@ -74,9 +75,6 @@
                 </div>
                 <?php
 
-
-
-                // var_dump($dataid);
 
 
                 $query = "SELECT * FROM inquires WHERE id=" . (int)$dataid . "";

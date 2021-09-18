@@ -1,5 +1,5 @@
-<?php include('../includes/dbcon.php') ?>
 <?php include('header.php') ?>
+<?php include('../includes/dbcon.php') ?>
 <?php include('sidebar.php') ?>
 
 <?php

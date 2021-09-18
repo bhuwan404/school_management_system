@@ -1,5 +1,6 @@
-<?php include('../includes/dbcon.php') ?>
 <?php include('header.php') ?>
+
+<?php include('../includes/dbcon.php') ?>
 <?php include('sidebar.php') ?>
 <div class="content-header">
     <div class="container-fluid">
@@ -8,7 +9,7 @@
                 <a href="dashboard.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME ADMIN</strong></h3>
+            <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
@@ -49,15 +50,7 @@
                 while ($row = mysqli_fetch_assoc($query)) {
                 ?>
                     <div class="card-body">
-                        <h5>
-                            <?php
-                            if ($row['user_type'] == 1) {
-                                echo "<strong>Teacher</strong>";
-                            } else {
-                                echo "<strong>Student</strong>";
-                            }
-                            ?>
-                        </h5>
+                    <h5><strong><?php echo strtoUpper($row['user_type']);  ?></strong></h5>
                         <h5 class="text-dark">
                             Name : <?php echo $row['fname'], " ", $row['lname'], "<br>" ?>
                             Contact : <?php echo $row['phone'], "<br>" ?>
@@ -95,15 +88,7 @@
                 while ($row = mysqli_fetch_assoc($query)) {
                 ?>
                     <div class="card-body">
-                        <h5>
-                            <?php
-                            if ($row['user_type'] == 1) {
-                                echo "<strong>Teacher</strong>";
-                            } else {
-                                echo "<strong>Student</strong>";
-                            }
-                            ?>
-                        </h5>
+                        <h5><strong><?php echo $row['user_type']  ?></strong></h5>
                         <h5 class="text-dark">
                             Name : <?php echo $row['fname'], " ", $row['lname'], "<br>" ?>
                             Contact : <?php echo $row['phone'], "<br>" ?>

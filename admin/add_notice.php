@@ -1,4 +1,5 @@
 <?php include('header.php') ?>
+
 <?php include('sidebar.php') ?>
 <div class="content-header">
     <div class="container-fluid">
@@ -7,7 +8,7 @@
                 <a href="dashboard.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME ADMIN</strong></h3>
+            <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
@@ -39,6 +40,10 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label for="valid">valid-upto</label>
+                    <input type="date" class="form-control" name="validUpto" required id="valid" placeholder="Subject of notice">
+                </div>
+                <div class="form-group">
                     <label for="message">message</label>
                     <textarea class="form-control" name="notice" id="message" rows="3"></textarea>
                 </div>
@@ -51,20 +56,24 @@
 <?php include('footer.php') ?>
 
 <?php
+if(isset($_POST['add_notice'])){
 
-include('../includes/dbcon.php');
+    include('../includes/dbcon.php');
+    $subject = $_POST['subject'];
+    $to_whom = $_POST['to_whom'];
+    $date = $_POST['validUpto'];
+    $message = $_POST['notice'];
 
-$subject = $_POST['subject'];
-$to_whom = $_POST['to_whom'];
-$message = $_POST['notice'];
-echo $subject;
+    echo $subject;
+    
+    $sql = "INSERT INTO notice (to_whom, subject, message, validUpto) VALUE('$to_whom','$subject','$message', '$date')";
+    $res = mysqli_query($conn, $sql);
+    if (!$res) {
+        die("Insertion failed!");
+    } else {
+        die("notice added");
+    }
 
-$sql = "INSERT INTO notice (to_whom, subject, message) VALUE('$to_whom','$subject','$message')";
-$res = mysqli_query($conn, $sql);
-if (!$res) {
-    die("Insertion failed!");
-} else {
-    die("notice added");
 }
 
 

@@ -9,17 +9,19 @@ $row = mysqli_fetch_assoc($result);
 $fname = $row['fname'];
 $lname = $row['lname'];
 $contact = $row['phone'];
+$email = $row['email'];
+$faculty = $row['courseName'];
 $username = $row['username'];
 $password = $row['password'];
 $user_type = $row['user_type'];
 
-if ($user_type == 2) {
+if ($user_type == "student") {
     $standard = $row['standard'];
     $rollno = $row['rollno'];
-    $sql = "INSERT INTO student (fname, lname, contact, standard, rollno, user_name, password ) VALUES ('$fname', '$lname', '$contact', '$standard', '$rollno', '$username', '$password')";
+    $sql = "INSERT INTO student (fname, lname, contact, email, courseName, user_name, password ) VALUES ('$fname', '$lname', '$contact', '$email', '$faculty', '$username', '$password')";
 }
-if ($user_type == 1) {
-    $sql = "INSERT INTO teacher (fname, lname, contact,  user_name, password ) VALUES ('$fname', '$lname', '$contact', '$username', '$password')";
+if ($user_type == "teacher") {
+    $sql = "INSERT INTO teacher (fname, lname, contact, email, courseName, user_name, password ) VALUES ('$fname', '$lname', '$contact', '$email', '$faculty', '$username', '$password')";
 }
 $res = mysqli_query($conn, $sql);
 if (!$res) {

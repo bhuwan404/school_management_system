@@ -1,6 +1,6 @@
 <?php
-$id = $_GET['id'];
 
+$usertype = $_POST['usertype'];
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $course = $_POST['course'];
@@ -9,7 +9,7 @@ $email = $_POST['email'];
 $username = $_POST['uname'];
 $password = $_POST['password'];
 
-if ($id == 2) {
+if ($usertype == 'student') {
     $user = "student";
 }
 else{

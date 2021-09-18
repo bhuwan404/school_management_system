@@ -18,31 +18,24 @@
 </head>
 
 <body>
-    
-<section class="navigation">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark  px-5 px-3 text-light">
-        <ul class="navbar-nav mr-auto pl-3 pl-2">
-            <li class="nav-item">
-                <a href="../index.php" class="btn btn-info text-light text-decoration-none">Back</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav mr-auto">
-            <li class="navbar-brand nav-item">School Management System: <strong>Course Details</strong></li>
-        </ul>
-    </nav>
+<?php include('../navbar.php') ?>
+<section>
+    <div class="container-fluid pt-5 bg-light">
+        <h4 class="pt-3"><i class="fas fa-home"></i> / COURSE DETAILS</h4>
+    </div>
 </section>
 
 
-<section class="py-5" id="about-us">
+<section class="mt-5 py-5" id="about-us">
   <div class="text-center mb-5">
     <h2>BIM(Bachelor of Information Management)</h2>
   </div>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-12 col-12 pb-2">
+      <div class="col-lg-6 col-md-6 col-12 pb-2">
         <img src="../images/demo.jpg" alt="" class="img-fluid">
       </div>
-      <div class="col-12 col-md-12 col-12">
+      <div class="col-lg-6 col-md-6 col-12">
         <h4 class="pb-2">About BIM</h4>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia corrupti aspernatur dolores sint, ipsum totam commodi velit nisi, animi, perferendis possimus quo doloribus incidunt neque aut asperiores omnis quam quia?</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quasi veritatis excepturi distinctio earum laborum nulla accusamus? Officiis possimus quidem dolore </p>
@@ -444,6 +437,33 @@
 
   </div>
 </section>
+
+
+
+<div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2021. All rights reserved.
+    </div>
+    <!-- Copyright -->
+
+    <!-- Right -->
+    <div>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#!" class="text-white">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </div>
 
 </body>
 </html>

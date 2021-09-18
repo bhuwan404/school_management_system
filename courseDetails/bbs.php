@@ -18,21 +18,14 @@
 </head>
 
 <body>
-    
-<section class="navigation">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark  px-lg-5 px-3 text-light">
-        <ul class="navbar-nav mr-auto pl-lg-3 pl-2">
-            <li class="nav-item">
-                <a href="../index.php" class="btn btn-info text-light text-decoration-none">Back</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav mr-auto">
-            <li class="navbar-brand nav-item">School Management System: <strong>Course Details</strong></li>
-        </ul>
-    </nav>
+<?php include('../navbar.php') ?>
+<section>
+    <div class="container-fluid pt-5 bg-light">
+        <h4 class="pt-3"><i class="fas fa-home"></i> / COURSE DETAILS</h4>
+    </div>
 </section>
 
-<section class="py-5" id="about-us">
+<section class="mt-5 py-5" id="about-us">
   <div class="text-center mb-5">
     <h2>BBS(Bachelor of Business Studies)</h2>
   </div>
@@ -242,6 +235,33 @@
 
   </div>
 </section>
+
+
+
+<div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2021. All rights reserved.
+    </div>
+    <!-- Copyright -->
+
+    <!-- Right -->
+    <div>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#!" class="text-white">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </div>
 
 </body>
 </html>

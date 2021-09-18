@@ -1,37 +1,7 @@
-<?php
-session_start();
-$uid = $_SESSION['uid'];
-if (!isset($_SESSION['uid'])) {
-    header('location: ../login.php');
-}
-include('../includes/dbcon.php');
-$id = $_SESSION['id'];
-if($uid == 2){
-    $sql = "select * from teacher where id=$id";
-}
-else if($uid == 3){
-    $sql = "select * from student where id=$id";
-    
-}
-else{
-    $sql = "select * from admin where id=$id";
-}
-
-$res = mysqli_query($conn, $sql);
-if(!$res){
-    echo "$uid";
-    echo "$id";
-    die("query failed");
-}
-else{
-    $row = mysqli_fetch_assoc($res);
-    $user = $row['fname'];
-}
-
-
-?>
-
 <?php include('header.php') ?>
+
+<?php include('../includes/dbcon.php'); ?>
+
 <?php include('sidebar.php') ?>
 
 <!-- Content Header (Page header) -->
@@ -42,9 +12,7 @@ else{
                 <a href="dashboard.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME
-                        <?php echo strtoupper($user); ?>
-                    </strong></h3>
+            <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
@@ -56,32 +24,36 @@ else{
             <h1 class="m-0 text-dark">All Students</h1>
         </div><!-- /.row -->
         
-    </div><!-- /.container-fluid -->
+    </div>
 </div>
 <div class="container pb-5">
     <div class="m-3">
         <form action="" method="POST">
             <b>select Faculty</b>
-            <select name="faculty">
+            <select id="faculty" onchange="searchByFaculty()">
+                <option disabled selected hidden>Select Faculty</option>
                 <option>Bsc.CSIT</option>
                 <option>BCA</option>
                 <option>BIM</option>
                 <option>BBS</option>
             </select>
-            <button type="submit" name="submit" class="btn btn-danger mx-3">Show Results</button>
+            <b>enter Name</b>
+            <input type="text" id="name" placeholder="Name" onkeyup="searchByName()">
+
         </form>
     </div>
-    
-    <?php if(isset($_POST['submit'])){
-        $faculty = $_POST['faculty'];
-        ?>
+
+
+    <script type="text/javascript" src="filterResult.js"></script>
+
 
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered" id="myTable">
                 <thead>
                     <tr>
                         <th>S.N.</th>
                         <th>Name</th>
+                        <th>Faculty</th>
                         <th>Email</th>
                         <th>Contact</th>
                         <?php if($uid == 1){ ?>
@@ -97,7 +69,7 @@ else{
                     <?php
                     include('../includes/dbcon.php');
     
-                    $sql = "SELECT * FROM student where courseName='$faculty'";
+                    $sql = "SELECT * FROM student";
                     $res = mysqli_query($conn, $sql);
     
                     if (mysqli_num_rows($res) < 1) {
@@ -110,6 +82,7 @@ else{
                             echo "<tr>";
                             echo "<td>" . $count++ . "</td>";
                             echo "<td>" . $row['fname'] . " " . $row['lname'] . "</td>";
+                            echo "<td>" . $row['courseName'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>" . $row['contact'] . "</td>";
                             if($uid == 1){
@@ -127,9 +100,4 @@ else{
             </table>
         </div>
 
-    <?php } ?>
-
-</div>
-
-</div>
 <?php include('footer.php') ?>

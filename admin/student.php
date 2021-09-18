@@ -1,13 +1,12 @@
+<?php include('header.php'); ?>
 <?php
 include('../includes/dbcon.php');
-session_start();
-$uid = $_SESSION['uid'];
 if ($uid == 2 or $uid == 3) {
-    header('location: list_student.php');
+    header('location: list_teacher.php');
 }
 ?>
-<?php include('header.php')
-?>
+
+<?php include('../includes/dbcon.php'); ?>
 <?php include('sidebar.php') ?>
 <div class="content-header">
     <div class="container-fluid">
@@ -16,7 +15,7 @@ if ($uid == 2 or $uid == 3) {
                 <a href="dashboard.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME ADMIN</strong></h3>
+            <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">

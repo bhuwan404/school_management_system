@@ -1,5 +1,35 @@
 <?php
-$site_url = 'http://localhost/bhuwan/myprojects/schoolmanagementsystem/';
+// $site_url = 'http://localhost/bhuwan/myprojects/schoolmanagementsystem/';
+session_start();
+$uid = $_SESSION['uid'];
+if (!isset($_SESSION['uid'])) {
+    header('location: ../login.php');
+}
+
+include('../includes/dbcon.php');
+$uid = $_SESSION['uid'];
+$id = $_SESSION['id'];
+if($uid == 2){
+    $sql = "select * from teacher where id=$id";
+}
+else if($uid == 3){
+    $sql = "select * from student where id=$id";
+    
+}
+else{
+    $sql = "select * from admin where id=$id";
+}
+
+$res = mysqli_query($conn, $sql);
+if(!$res){
+    echo "$uid";
+    echo "$id";
+    die("query failed");
+}
+else{
+    $row = mysqli_fetch_assoc($res);
+    $user = $row['fname'];
+}
 ?>
 
 <!DOCTYPE html>

@@ -21,87 +21,146 @@
   <!-- swaped event -->
   <link rel="stylesheet" href="js/swiped-events.min.js">
 
+  <style>
+    .heroSection{
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("images/slide.jpg");
+      height: 100vh;
+      width: auto;
+      background-position: center;
+      /* background-repeat: no-repeat; */
+      background-size: cover;
+    }
+    .heroSection .hero_content{ 
+      padding-top: 50px;
+    }
+
+    /* Recent update > card > date */
+    .icon-calendar{
+      align-items: center;
+      background: #fff;
+      border-top: .6rem solid blue;
+      display: flex;
+      flex-direction: column;
+      min-height: 4rem;
+      min-width: 4rem;
+      text-align: center;
+    }
+    .icon-calendar_number{
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1;
+    }
+    .icon-calendar_number
+    .icon-calendar_month{
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+  </style>
+
 </head>
 
 <body>
-  <!-- navigation -->
-  <section class="navigation">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top px-lg-5 px-3">
-      <a class="navbar-brand order-2 order-lg-0 mr-auto mx-lg-3" href="index.php"><b>SMS</b></a>
-      <button class="navbar-toggler mr-3" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+ 
+<?php include('navbar.php') ?>
 
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav main-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#about-us">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#courses">Programs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#gallery">Gallery</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#contact-us">Contact-us</a>
-          </li>
-        </ul>
-        <ul class="navbar-nav nav-flex-icons ml-auto">
-          <li class="nav-item">
-            <a href="admin/dashboard.php" class="text-light text-decoration-none"><i class="fas fa-user text-light mr-2"></i><strong>Login</strong></a>
-          </li>
-        </ul>
-      </div>
+<!-- hero section -->
 
-    </nav>
-  </section>
+<section>
+  <div class="heroSection container-fluid py-auto">
+      <div class="container my-auto">
 
-  <!-- hero section -->
-
-  <div class="container-fluid" style="background: linear-gradient(45deg, purple, transparent);">
-    <div class="d-flex" style=" height: 100vh;">
-
-      <div class=" row my-auto mx-lg-5 mx-md-3 mx-sm-1">
-        <div class="col-md-6 col-lg-6 col-12 text-light my-5">
-          <h3><b>School Managenent System</b></h3>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias animi nulla provident facere ullam ipsam sed nostrum</p>
-          <a href=""><button type="button" class="btn btn-info shadow"><i class="fas fa-phone"></i> Call Now</button></a>
-        </div>
-        <div class="col-md-6 col-lg-6 col-12">
-
-          <div class="w-75 card mx-auto text-center pt-4 shadow-lg">
-            <h4>Inquiry Form</h4>
-            <form action="insert_query.php?id=1" method="POST">
-              <div class="form-group">
-                <div class="card-body">
-                  <div class="mb-4">
-                    <input type="text" name="name" placeholder="Your name" required class="form-control">
-                  </div>
-                  <div class="mb-4">
-                    <input type="email" name="email" placeholder="Your email" class="form-control">
-                  </div>
-                  <div class="mb-4">
-                    <input type="number" name="phone" placeholder="Your mobile" class="form-control">
-                  </div>
-                  <div class="mb-4">
-                    <textarea class="form-control" name="message" placeholder="Your query" name="message" id="" cols="30" rows="2"></textarea>
-                  </div>
-                  <input class="px-5" name="submit" type="submit" value="Submit">
-                </div>
-              </div>
-
-            </form>
+        <div class="row py-auto mx-auto mt-5">
+          <div class="hero_content col-md-6 col-lg-6 col-12 text-light">
+            <h3><b>School Managenent System</b></h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias animi nulla provident facere ullam ipsam sed nostrum</p>
+            <a href=""><button type="button" class="btn btn-primary shadow"><i class="fas fa-phone"></i> Call Now</button></a>
           </div>
+          <div class="hero_content col-md-6 col-lg-6 col-12">
+      
+            <div class="card mx-auto text-center pt-3 shadow-lg">
+              <h4 class="text-dark">Inquiry Form</h4>
+              <form action="insert_query.php?id=1" method="POST">
+                <div class="form-group">
+                  <div class="card-body">
+                    <div class="mb-4">
+                      <input type="text" name="name" placeholder="Your name" required class="form-control">
+                    </div>
+                    <div class="mb-4">
+                      <input type="email" name="email" placeholder="Your email" class="form-control">
+                    </div>
+                    <div class="mb-4">
+                      <input type="number" name="phone" placeholder="Your mobile" class="form-control">
+                    </div>
+                    <div class="mb-4">
+                      <textarea class="form-control" name="message" placeholder="Your query" name="message" id="" cols="30" rows="2"></textarea>
+                    </div>
+                    <input class="btn btn-primary shadow px-5" name="submit" type="submit" value="Submit">
+                  </div>
+                </div>
+      
+              </form>
+            </div>
+      
+          </div>
+        </div>
 
+      </div>
+  </div>
+</section>
+<!-- </div> -->
+
+
+
+<!-- </div>  -->
+
+
+  <!-- popup modal for notice -->
+
+<?php
+  include("includes/dbcon.php");
+  $todayDate = date("Y-m-d");
+  $sql = "select * from notice where validUpto >= '$todayDate' and to_whom = 'all'";
+
+  $res = mysqli_query($conn, $sql);
+  if(!$res){
+    echo "unable to fetch notice";
+  }
+  else{
+    while($row = mysqli_fetch_assoc($res)){
+      ?>
+      <!-- Modal -->
+      <div class="modal fade" id="popupNotice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel"><b>NOTICE:<?php echo " ". $row['subject']; ?></i></b></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <?php echo $row['message']; ?>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">OK</button>
+              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+            </div>
+          </div>
         </div>
       </div>
+      
+      <?php
+    }  
+  }  
+  ?>  
+  <script type="text/javascript">
+    setTimeout(function(){
+      $('#popupNotice').modal('show');
+    }, 900);
+  </script>
+    <!-- end popup modal -->
 
-    </div>
-  </div>
 
   <!-- our courses -->
   <section class="py-5 bg-light" id="courses">
@@ -122,7 +181,7 @@
                 Bsc. CSIT
               </p>
               <hr>
-              <a href="courseDetails/csit.php"><button class="btn btn-info text-light">View More</button></a>
+              <a href="courseDetails/csit.php"><button class="btn btn-primary text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -137,7 +196,7 @@
                 BCA
               </p>
               <hr>
-              <a href="courseDetails/bca.php"><button class="btn btn-info text-light">View More</button></a>
+              <a href="courseDetails/bca.php"><button class="btn btn-primary text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -152,7 +211,7 @@
                 BIM
               </p>
               <hr>
-              <a href="courseDetails/bim.php"><button class="btn btn-info text-light">View More</button></a>
+              <a href="courseDetails/bim.php"><button class="btn btn-primary text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -167,7 +226,7 @@
                 BBS
               </p>
               <hr>
-              <a href="courseDetails/bbs.php"><button class="btn btn-info text-light">View More</button></a>
+              <a href="courseDetails/bbs.php"><button class="btn btn-primary text-light">View More</button></a>
             </div>
           </div>
         </div>
@@ -195,151 +254,86 @@
     </div>
   </section>
 
-  <!-- Our Teachers -->
-  <section class="py-5 bg-light" id="teachers">
+
+
+  
+
+  <!-- Recent Updates -->
+
+  <?php
+    include('includes/dbcon.php');
+    $sql = "select * from news order by id desc";
+    $res = mysqli_query($conn, $sql);
+    if(!$res){
+      echo "failed to fetch news updates";
+    }
+  ?>
+
+  <section class="py-5 bg-light" id="updates">
     <div class="text-center mb-5">
-      <h2>Our Teachers</h2>
-    </div>
+      <h2>Recent Updates</h2>
+      <div class="container">
+        <div class="row p-2">
+          
+          <?php 
+          if(mysqli_num_rows($res) > 0){
+            while($row = mysqli_fetch_assoc($res)){
+              $img = $row['image'];
+              $newsDate =  date("d", strtotime($row['date']));
+              $newsMonth = date("M", strtotime($row['date']));
+              $content = $row['content'];
+          ?>
+              <div class="col-lg-4 col-md-6 col-12">
+                <!-- Card -->
+                <div class="card my-3 shadow">
+                  <span class="icon-calendar shadow" style="pointer-event: none; position: absolute; top:0; z-index: 1; padding: 10px 15px">
+                    <span class="icon-calendar_number"><?= $newsDate  ?></span>
+                    <span class="icon-calendar_month"><?= $newsMonth ?></span>
+                  </span>
+                  <!-- Card image -->
+                  <div class="view overlay">
+                    <img class="card-img-top" src="images/news/<?= $row['image'] ?>"
+                      alt="Card image cap">
+                    <a href="#!">
+                      <div class="mask rgba-white-slight"></div>
+                    </a>
+                  </div>
+                  <!-- Card content -->
+                  <div class="card-body">
+                    <!-- Title -->
+                    <h4 class="card-title"><?php echo $row['heading'] ?></h4>
+                    <!-- Text -->
+                    <p class="card-text"><?php
 
-    <div class="container">
-      <div class="row">
-
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="card shadow p-3 mb-5">
-            <div class="row">
-              <div class="col-4">
-                <img src="images/teacher.jpg" alt="" class="img-fluid rounded-circle my-auto" style="">
-              </div>
-              <div class="col-8 my-auto">
-                <div class="my-auto">
-                  <h5 class="">Teacher's Name </h5>
-                  <i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i>
+                    if(strlen($content) > 90){
+                      $sub_str = substr($content, 0, 90)."..."; 
+                      echo $sub_str;
+                    }
+                    else{
+                      echo $content;
+                    }
+                    ?></p>
+                    <!-- Button -->
+                    <a href="news.php?id=<?= $row['id'] ?>" class="btn btn-primary">Read More</a>
+                  </div>
                 </div>
+                <!-- Card -->
               </div>
-            </div>
-            <!-- <hr> -->
-            <div class="card-body text-center">
-              <p>Database Management System <br>
-                Rating <i class="fa fa-star pr-2"></i><i class="fa fa-star  pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i>
-              </p>
-            </div>
-          </div>
+          <?php
+            }
+          }else{
+            echo "No result found";
+          }
+            ?>
+             
         </div>
-
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="card shadow p-3 mb-5">
-            <div class="row">
-              <div class="col-4">
-                <img src="images/teacher.jpg" alt="" class="img-fluid rounded-circle my-auto" style="">
-              </div>
-              <div class="col-8 my-auto">
-                <div class="my-auto">
-                  <h5 class="">Teacher's Name </h5>
-                  <i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i>
-                </div>
-              </div>
-            </div>
-            <!-- <hr> -->
-            <div class="card-body text-center">
-              <p>Database Management System <br>
-                Rating <i class="fa fa-star pr-2"></i><i class="fa fa-star  pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 col-12 ">
-          <div class="card shadow p-3 mb-5">
-            <div class="row">
-              <div class="col-4">
-                <img src="images/teacher.jpg" alt="" class="img-fluid rounded-circle my-auto" style="">
-              </div>
-              <div class="col-8 my-auto">
-                <div class="my-auto">
-                  <h5 class="">Teacher's Name </h5>
-                  <i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i>
-                </div>
-              </div>
-            </div>
-            <!-- <hr> -->
-            <div class="card-body text-center">
-              <p>Database Management System <br>
-                Rating <i class="fa fa-star pr-2"></i><i class="fa fa-star  pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-          <div class="card shadow p-3 mb-5">
-            <div class="row">
-              <div class="col-4">
-                <img src="images/teacher.jpg" alt="" class="img-fluid rounded-circle my-auto" style="">
-              </div>
-              <div class="col-8 my-auto">
-                <div class="my-auto">
-                  <h5 class="">Teacher's Name </h5>
-                  <i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i>
-                </div>
-              </div>
-            </div>
-            <!-- <hr> -->
-            <div class="card-body text-center">
-              <p>Database Management System <br>
-                Rating <i class="fa fa-star pr-2"></i><i class="fa fa-star  pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-          <div class="card shadow p-3 mb-5">
-            <div class="row">
-              <div class="col-4">
-                <img src="images/teacher.jpg" alt="" class="img-fluid rounded-circle my-auto" style="">
-              </div>
-              <div class="col-8 my-auto">
-                <div class="my-auto">
-                  <h5 class="">Teacher's Name </h5>
-                  <i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i>
-                </div>
-              </div>
-            </div>
-            <!-- <hr> -->
-            <div class="card-body text-center">
-              <p>Database Management System <br>
-                Rating <i class="fa fa-star pr-2"></i><i class="fa fa-star  pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-12 ">
-          <div class="card shadow p-3 mb-5">
-            <div class="row">
-              <div class="col-4">
-                <img src="images/teacher.jpg" alt="" class="img-fluid rounded-circle my-auto" style="">
-              </div>
-              <div class="col-8 my-auto">
-                <div class="my-auto">
-                  <h5 class="">Teacher's Name </h5>
-                  <i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i><i class="fa fa-star text-warning pr-2"></i>
-                </div>
-              </div>
-            </div>
-            <!-- <hr> -->
-            <div class="card-body text-center">
-              <p>Database Management System <br>
-                Rating <i class="fa fa-star pr-2"></i><i class="fa fa-star  pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i><i class="fa fa-star pr-2"></i>
-              </p>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-
   </section>
 
+
   <!-- Gallery -->
-  <section class="py-5" id="gallery">
+  <!-- <section class="py-5" id="gallery">
     <div class="text-center mb-5">
       <h2>Gallery</h2>
     </div>
@@ -379,10 +373,10 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- footer section -->
-  <footer class="bg-dark text-light py-3" id="contact-us">
+  <footer class=" text-dark py-3" id="contact-us">
     <div class="text-center py-4">
       <h2><strong>Thanks for Visiting</strong> </h2>
     </div>
@@ -395,7 +389,7 @@
           <div class="address text-center">
             <i class="fas fa-map-marker-alt px-2 pb-2"></i>Shankhamul- 9 , Lalitpur, Nepal(next to Sankha park)<br>
             <i class="fas fa-phone px-2 pb-2"></i>(+977 1) 5260894, 9851073795, 01 5260890<br>
-            <i class="fas fa-envelope px-2 pb-2"></i>ncitcollege@hotmail.com, info@nagarjuna.edu.np<br>
+            <i class="fas fa-envelope px-2 pb-2"></i>ncitcollege@hotmail.com, primary@nagarjuna.edu.np<br>
             <i class="fas fa-globe px-2 pb-2"></i>http://nagarjunacollege.edu.np/<br>
           </div>
           <!-- <div class="sm-link text-center">
@@ -414,15 +408,41 @@
               <input type="text" name="name" placeholder="Name" size="30" required><br><br>
               <input type="email" name="email" placeholder="Email" size="30" required><br><br>
               <textarea name="message" id="" cols="30" rows="3" placeholder="Message" required></textarea><br>
-              <input type="submit" value="Submit" class='btn btn-info px-3 py-1 my-2'>
+              <input type="submit" value="Submit" class='btn btn-primary px-3 py-1 my-2'>
             </form>
           </div>
         </div>
 
       </div>
     </div>
-    </div>
   </footer>
+
+
+
+  <div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
+    <!-- Copyright -->
+    <div class="text-white mb-3 mb-md-0">
+      Copyright © 2021. All rights reserved.
+    </div>
+    <!-- Copyright -->
+
+    <!-- Right -->
+    <div>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="#!" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="#!" class="text-white">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </div>
 
 </body>
 
