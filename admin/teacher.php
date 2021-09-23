@@ -1,12 +1,11 @@
+<?php include('header.php') ?>
+
 <?php
 include('../includes/dbcon.php');
-session_start();
-$uid = $_SESSION['uid'];
 if ($uid == 2 or $uid == 3) {
-    header('location: list_student.php');
+    header('location: list_teacher.php');
 }
 ?>
-<?php include('header.php') ?>
 <?php include('sidebar.php') ?>
 <div class="content-header">
     <div class="container-fluid">
@@ -15,7 +14,7 @@ if ($uid == 2 or $uid == 3) {
                 <a href="dashboard.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME ADMIN</strong></h3>
+            <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
@@ -44,7 +43,7 @@ if ($uid == 2 or $uid == 3) {
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-success elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
-                <a href="<?= $site_url ?>admin/list_teacher.php">
+                <a href="list_teacher.php">
                     <div class="info-box-content text-dark">
                         <span class="info-box-text">View All Teachers</span>
                         <span class="info-box-number"><i class="fas fa-eye"></i></span>
@@ -55,7 +54,7 @@ if ($uid == 2 or $uid == 3) {
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="info-box mb-3">
                 <span class="info-box-icon bg-info elevation-1"><i class="fas fa-chalkboard-teacher"></i></span>
-                <a href="<?= $site_url ?>admin/add_teacher.php">
+                <a href="add_teacher.php">
                     <div class="info-box-content text-dark">
                         <span class="info-box-text">Add Teachers</span>
                         <span class="info-box-number"><i class="fas fa-plus"></i></span>
