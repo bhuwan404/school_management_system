@@ -1,14 +1,24 @@
+<?php include('header.php') ?>
+
+
 <?php
-session_start();
-$uid = $_SESSION['uid'];
-if (!isset($_SESSION['uid'])) {
-    header('location: ../login.php');
-}
+include('../includes/dbcon.php');
+
+
+$studentCount = mysqli_query($conn, "select count(*) from student");
+$teacherCount = mysqli_query($conn, "select count(*) from teacher");
+$inquiryCount = mysqli_query($conn, "select count(*) from inquires");
+$approveRequests = mysqli_query($conn, "select count(*) from user_form where check_approval<0");
+
+
+$totalStudent = mysqli_fetch_array($studentCount);
+$totalTeacher = mysqli_fetch_array($teacherCount);
+$totalInquiry = mysqli_fetch_array($inquiryCount);
+$totalRequest = mysqli_fetch_array($approveRequests);
 
 
 ?>
 
-<?php include('header.php') ?>
 <?php include('sidebar.php') ?>
 
 <!-- Content Header (Page header) -->
@@ -19,21 +29,11 @@ if (!isset($_SESSION['uid'])) {
                 <a href="../index.php">Back</a>
             </div><!-- /.col -->
             <div class="col-sm-4 text-center">
-                <h3><strong>WELCOME
-                        <?php
-                        if ($uid == 3) {
-                            echo "STUDENT";
-                        } else if ($uid == 2) {
-                            echo "TEACHER";
-                        } else { //if($uid == 3])
-                            echo "ADMIN";
-                        }
-                        ?>
-                    </strong></h3>
+                <h4><strong>WELCOME <?php echo strtoupper($user); ?> </strong></h4>
             </div>
             <div class="col-sm-4">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                    <li class="breadcrumb-item"><a href="#"><?php echo $user ?></a></li>
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </div><!-- /.col -->
@@ -56,7 +56,7 @@ if (!isset($_SESSION['uid'])) {
 
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Total Students</span>
-                            <span class="info-box-number">2000</span>
+                            <span class="info-box-number"><?php echo "$totalStudent[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['uid'])) {
                     <a href="teacher.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Total Teachers</span>
-                            <span class="info-box-number">50</span>
+                            <span class="info-box-number"><?php echo "$totalTeacher[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -85,10 +85,10 @@ if (!isset($_SESSION['uid'])) {
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-search"></i></span>
 
-                    <a href="<?= $site_url ?>admin/inquires.php">
+                    <a href="inquires.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">New Inquires</span>
-                            <span class="info-box-number">210</span>
+                            <span class="info-box-number"><?php echo "$totalInquiry[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -99,10 +99,10 @@ if (!isset($_SESSION['uid'])) {
                 <div class="info-box mb-3">
                     <span class="info-box-icon bg-success elevation-1"><i class="fas fa-check"></i></span>
 
-                    <a href="<?= $site_url ?>admin/user_form.php">
+                    <a href="user_form.php">
                         <div class="info-box-content text-dark">
                             <span class="info-box-text">Apporve Requests</span>
-                            <span class="info-box-number">210</span>
+                            <span class="info-box-number"><?php echo "$totalRequest[0]" ?></span>
                         </div>
                         <!-- /.info-box-content -->
                     </a>
@@ -115,6 +115,41 @@ if (!isset($_SESSION['uid'])) {
 
     </div>
     <!--/. container-fluid -->
+</section>
+
+<!-- notices -->
+<section class="mx-lg-5 mx-md-5 mx-sm-2 my-5 ">
+<div id="notice" class=" pb-5">
+    <div class="container">
+        <hr><h4 class="text-center"><strong>Notices</strong></h4><hr>
+    </div>
+    <!-- <div class="container"> -->
+    <?php
+        include('../includes/dbcon.php');
+        $query = "SELECT * FROM notice where to_whom = 'all'";
+        $res = mysqli_query($conn, $query);
+        if (mysqli_num_rows($res) > 0) {
+        while ($row = mysqli_fetch_assoc($res)) {
+    ?>
+    <div class="container">
+    <div class="card my-2 shadow bg-white">
+        <div class="card-body text-dark">
+            <h4 class="my-2 text-primary"><?php echo strtoupper($row['subject']) ?></h4>
+            <h5 class="card-text"><?php echo $row['message'] ?></h5>
+        </div>
+    </div>
+    </div>
+            <?php
+        }
+    }
+    else{
+        ?>
+        <h2>No Notices to show</h2>
+        <?php
+    }
+    ?>
+    <!-- </div> -->
+</div> 
 </section>
 
 <!-- calendar -->
@@ -155,29 +190,9 @@ if (!isset($_SESSION['uid'])) {
     </script>
 </section>
 
-<section id="notice" class=" my-5 pb-5">
-    <div class="container-fluid bg-info text-light py-1">
-        <h2 class="text-center">Notices</h2>
-    </div>
-    <div class="container">
-<?php
-    include('../includes/dbcon.php');
-    $query = "SELECT * FROM notice where to_whom = 'all'";
-    $res = mysqli_query($conn, $query);
-    if (mysqli_num_rows($res) > 0) {
-        while ($row = mysqli_fetch_assoc($res)) {
-            ?>
-<div class="card my-5 shadow">
-    <div class="card-body">
-        <h2 class="card-title my-2"><?php echo $row['subject'] ?></h2>
-        <p class="card-text"><?php echo $row['message'] ?></p>
-    </div>
-</div>
-            <?
-        }
-    }
-    ?>
-    </div>
-</section>
 
+
+<section id="endpage">
+<div class="my-5 py-5"></div>
+</section>
 <?php include('footer.php') ?>

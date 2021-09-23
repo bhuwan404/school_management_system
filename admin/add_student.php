@@ -20,68 +20,57 @@
         </div><!-- /.row -->
     </div>
 </div>
-<div class="container pb-5">
-    <form method="POST">
-        <div class="form-group">
-            <label for="firstname">First Name</label>
-            <input type="text" class="form-control" name="fname" required id="firstname" placeholder="Enter First Name">
-        </div>
-        <div class="form-group">
-            <label for="lastname">Last Name</label>
-            <input type="text" class="form-control" name="lname" id="lastname" placeholder="Enter Last Name">
-        </div>
-        <div class="form-group">
-            <label for="roll">Roll No.</label>
-            <input type="number" class="form-control" name="rollno" required id="roll" placeholder="Enter Roll No.">
-        </div>
-        <div class="form-group">
-            <label for="std">Standard</label>
-            <input type="text" class="form-control" name="standard" required id="std" placeholder="Enter Last Name">
-        </div>
-        <div class="form-group">
-            <label for="contact">Phone No.</label>
-            <input type="number" class="form-control" name="phone" required id="contact" placeholder="Enter Phone No.">
-        </div>
-        <div class="form-group">
-            <label for="user_name">Username</label>
-            <input type="text" class="form-control" name="uname" required id="user_name" placeholder="Enter Username">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" required id="password" placeholder="Enter Password">
-        </div>
-
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-    </form>
+<?php
+            if(isset($_GET['error'])){
+                $error=$_GET['error'];
+              echo  "<span class='text-danger'>  $error already exists";
+            }
+            ?>
+<div class="container pb-5 mb-5">
+<form action="check_student.php" method="POST" onsubmit="return validation()">
+                    <div class="md-form form-group">
+                        <input type="text" name="fname" class="form-control" placeholder="First Name" id ="vfname" required>
+                        <span id="err_fname" class="text-danger font weight-bold"></span>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="text" name="lname" class="form-control" placeholder="Last Name" id ="vlname" required>
+                        <span id="err_lname" class="text-danger font weight-bold"></span>
+                    </div>
+                    <div class="md-form form-group">
+                    <select class="form-control" id="vcourse" name="course">
+                        <option selected hidden disabled>Select Faculty</option>
+                        <option>Bsc.CSIT</option>
+                        <option>BCA</option>
+                        <option>BIM</option>
+                        <option>BBS</option>
+                    </select> 
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="text" name="contact" class="form-control" placeholder="Phone No." id ="vcontact" required>
+                        <span id="err_contact"class="text-danger font weight-bold"></span>
+                    </div>
+                    
+                    <div class="md-form form-group">
+                        <input type="text" name="email" class="form-control" placeholder="Email Address" id ="vemail"required>
+                        <span id="err_email"class="text-danger font weight-bold"></span>
+                    </div>
+                   
+                    <div class="md-form form-group">
+                        <input type="text" name="uname" class="form-control" placeholder="Username" required>
+                    </div>
+                    <div class="md-form form-group">
+                        <input type="password" name="password" class="form-control" placeholder="Password" required>
+                    </div>
+                   
+                    <div class="md-form from-group">
+                        <button type="submit" class="btn btn-primary" name="add_student">Submit</button>
+                    </div>
+                  
+                </form>
 </div>
 </div>
 <?php include('footer.php') ?>
 
-<?php
-
-if (isset($_POST['submit'])) {
-
-    include('../includes/dbcon.php');
-
-    $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
-    $rollno = $_POST['rollno'];
-    $standard = $_POST['standard'];
-    $phone = $_POST['phone'];
-    $uname = $_POST['uname'];
-    $pwd = $_POST['password'];
-
-    $sql = "INSERT INTO student (fname, lname, rollno, standard, contact, user_name, password) VALUES ('$fname', '$lname', '$rollno', '$standard', '$phone', '$uname', '$pwd')";
-    $res = mysqli_query($conn, $sql);
-    if (!$res) {
-        die('Insertion failed!');
-    } else {
-?>
-        <script>
-            alert('Data inserted successfully.');
-            window.open('list_student.php?', '_self');
-        </script>
-<?php
-    }
-}
-?>
+<script src="form_validation.js">
+    
+</script>

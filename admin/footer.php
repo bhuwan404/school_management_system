@@ -1,11 +1,11 @@
 </div>
 
 <!-- Main Footer -->
-<footer class="main-footer fixed-bottom">
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+<footer class="main-footer fixed-bottom mt-5">
+    <strong>Copyright &copy; 2021 <a href="https://bhuwanpaneru.com.np">SMS</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
-        <b>Version</b> 3.1.0-rc
+        <b>pROJECT</b> BCA 4th
     </div>
 </footer>
 </div>
@@ -19,21 +19,7 @@
 <!-- evo-calendar -->
 <script src="./calendar/evo-calendar.min.js"></script>
 
-<script>
-    (function() {
-        var path = window.location.href;
-        $(".nav-link").each(function() {
-            var href = $(this).attr('href');
-            // console.log(href);
-            if (path == decodeURIComponent(href)) {
-                $(this).addClass('active');
-                var parent = $(this).closest('.has-treeview');
-                parent.addClass('menu-open');
-                $(parent).find('.nav-link').first().addClass('active');
-            };
-        });
-    }());
-</script>
+<script src="script.js"></script>
 
 
 
